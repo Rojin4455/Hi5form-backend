@@ -1,0 +1,94 @@
+{% extends 'subscription/base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="hi5-container animate__animated animate__fadeIn">
+            <h1 class="hi5-title animate__animated animate__fadeInDown">Join HI5 Movie Pass Waitlist</h1>
+            <p class="lead mb-4 animate__animated animate__fadeInUp text-white">
+                Thanks for your interest! Please complete the form below to join our waitlist and receive updates about our launch.
+            </p>
+
+            {% if referral_code %}
+            <div class="alert alert-info animate__animated animate__bounceIn text-black">
+                You've been referred by a friend! Complete registration to help them earn free movie tickets.
+            </div>
+            {% endif %}
+
+            <form method="post" class="animate__animated animate__fadeInUp animate__fast">
+                {% csrf_token %}
+            
+                {% if form.non_field_errors %}
+                <div class="alert alert-danger animate__animated animate__shakeX">
+                    {% for error in form.non_field_errors %}
+                    {{ error }}
+                    {% endfor %}
+                </div>
+                {% endif %}
+            
+                <div class="mb-3 animate__animated animate__fadeInUp">
+                    <label for="id_name" class="form-label text-white">Full Name</label>
+                    {{ form.name.errors }}
+                    <input type="text" class="form-control bg-dark text-white border-0" id="id_name" name="name" required>
+                </div>
+            
+                <div class="mb-3 animate__animated animate__fadeInUp animate__delay-custom-1">
+                    <label for="id_age" class="form-label text-white">Age</label>
+                    {{ form.age.errors }}
+                    <input type="number" class="form-control bg-dark text-white border-0" id="id_age" name="age" min="13" max="120" required>
+                </div>
+            
+                <div class="mb-3 animate__animated animate__fadeInUp animate__delay-custom-1">
+                    <label for="id_mobile_number" class="form-label text-white">Mobile Number</label>
+                    {{ form.mobile_number.errors }}
+                    <input type="tel" class="form-control bg-dark text-white border-0" id="id_mobile_number" name="mobile_number" required>
+                    <div class="form-text text-light">Include country code for international numbers</div>
+                </div>
+            
+                <div class="mb-3 animate__animated animate__fadeInUp animate__delay-custom-1">
+                    <label for="id_email" class="form-label text-white">Email address</label>
+                    {{ form.email.errors }}
+                    <input type="email" class="form-control bg-dark text-white border-0" id="id_email" name="email" value="{{ form.email.value|default:'' }}" required>
+                </div>
+            
+                <div class="mb-3 animate__animated animate__fadeInUp animate__delay-custom-1">
+                    <label for="id_place" class="form-label text-white">City/Place</label>
+                    {{ form.place.errors }}
+                    <input type="text" class="form-control bg-dark text-white border-0" id="id_place" name="place" required>
+                </div>
+            
+                <div class="mb-3 animate__animated animate__fadeInUp animate__delay-custom-1">
+                    <label for="id_password" class="form-label text-white">Password</label>
+                    {{ form.password.errors }}
+                    <input type="password" class="form-control bg-dark text-white border-0" id="id_password" name="password" required>
+                </div>
+            
+                <div class="mb-3 animate__animated animate__fadeInUp animate__delay-custom-1">
+                    <label for="id_confirm_password" class="form-label text-white">Confirm Password</label>
+                    {{ form.confirm_password.errors }}
+                    <input type="password" class="form-control bg-dark text-white border-0" id="id_confirm_password" name="confirm_password" required>
+                </div>
+            
+                <div class="d-grid gap-2 animate__animated animate__zoomIn animate__delay-custom-1">
+                    <button type="submit" class="btn btn-primary">Join Waitlist</button>
+                </div>
+            </form>
+            
+
+            <div class="mt-4 text-center animate__animated animate__fadeInUp animate__delay-custom-1">
+                <div class="card">
+                    <div class="card-body background-white">
+                        <h3 class="hi5-subtitle" style="color: #eb232a;" >Exclusive Early Bird Benefits</h3>
+                        <p class="hi5-text">By signing up now, you'll receive:</p>
+                        <ul class="list-unstyled text-start ms-4 hi5-text">
+                            <li>• Early bird price of ₹499/month (regular ₹555)</li>
+                            <li>• VIP access to special screenings</li>
+                            <li>• Chance to win free movie tickets</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

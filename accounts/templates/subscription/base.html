@@ -1,0 +1,492 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HI5: India's First Movie Subscription Pass</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #eb232a; /* fallback color */
+            background-image: url("{% static 'survey/images/d5888e75d0b0bfce62c80e8b2c901849.jpg' %}");
+            background-size: cover;        /* ensures image covers full screen */
+            background-position: center;   /* centers the image */
+            background-repeat: no-repeat;  /* prevents tiling */
+            color: #222;
+        }
+
+        .navbar {
+            background-color: #eb232a; /* red with 60% opacity */
+            height: 80px;
+            /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); */
+        }
+    
+        .navbar-brand img {
+            height: 40px;
+        }
+    
+        .navbar-nav .nav-link {
+            color: #fff !important;
+            font-weight: 500;
+        }
+    
+        .navbar-nav .nav-link:hover {
+            color: #fca311 !important; /* subtle highlight */
+        }
+    
+        .hi5-container {
+            background-color: rgba(0, 0, 0, 0.6); /* semi-transparent black background */
+            color: #000; /* black text */
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+    
+        .hi5-title {
+            color: #e5e5e5;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+    
+        .hi5-subtitle {
+            color: #e5e5e5;
+            font-weight: 600;
+        }
+
+        .hi5-text {
+            color: #242422;
+            font-weight: 400;
+        }
+    
+        .btn-primary {
+            background-color: #eb232a;
+            border-color: #eb232a;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+        }
+    
+        .btn-primary:hover {
+            background-color: #a62c29;
+            border-color: #eb232a;
+        }
+    
+        .footer {
+            background-color: #eb232a;
+            color: white;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+            text-align: center;
+        }
+    
+        .referral-box {
+            background-color: #fffdf7;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+
+        .bounce-button {
+            animation: bounce 1.5s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .btn-hi5 {
+            background-color: #eb232a;
+            transition: background-color 0.3s;
+        }
+
+        .btn-hi5:hover {
+            background-color:#a62d2a;
+        }
+
+        .animate__delay-custom-1 {
+            animation-delay: 0.3s;
+        }
+
+        /* FAQ Section Styles */
+        .faq-section {
+            background-color: #f8f9fa;
+            padding: 3rem 0;
+            margin-top: 2rem;
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-title {
+            color: #eb232a;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .faq-question {
+            background-color: white;
+            color: #333;
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+
+        .faq-question:hover {
+            background-color: #f5f5f5;
+        }
+
+        .faq-answer {
+            background-color: #f8f9fa;
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+        }
+
+        .faq-answer p {
+            margin: 0;
+            padding: 1rem 0;
+            color: #555;
+        }
+
+        .faq-question i {
+            transition: transform 0.3s;
+        }
+
+        .faq-question.active i {
+            transform: rotate(180deg);
+        }
+
+        .faq-question.active + .faq-answer {
+            max-height: 200px; /* Adjust based on your content */
+            padding: 0.5rem 1.5rem;
+        }
+
+        .convenience-fee {
+            background-color: rgba(235, 35, 42, 0.1);
+            border-left: 4px solid #eb232a;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        .convenience-fee p {
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .convenience-fee strong {
+            color: #eb232a;
+        }
+
+        .footer-links {
+            margin-top: 1rem;
+        }
+
+        .footer-links a {
+            color: white;
+            margin: 0 0.5rem;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #fca311;
+            text-decoration: underline;
+        }
+
+        .footer-social {
+            margin-top: 1rem;
+        }
+
+        .footer-social a {
+            color: white;
+            margin: 0 0.5rem;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .footer-social a:hover {
+            color: #fca311;
+        }
+    </style>
+    
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <!-- <a class="navbar-brand" href="{% url 'landing_page' %}">HI5 Pass</a> -->
+            <!-- <a class="navbar-brand" href="{% url 'landing_page' %}">
+                <img src="{% static 'survey/images/logo.jpg' %}" alt="HI5 Logo" height="100">
+            </a> -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'landing_page' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'interest_form' %}">Join Now</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#faq">FAQ</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show mt-3" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+        
+        {% block content %}{% endblock %}
+    </div>
+    
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
+        <div class="container faq-container">
+            <h2 class="faq-title">Frequently Asked Questions</h2>
+            
+            <div class="convenience-fee">
+                <p>We offer the <strong>lowest convenience fee in India</strong> at a flat 5% on every ticket booking. This ensures a seamless experience with no hidden charges!</p>
+            </div>
+            
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What is the ₹555 Theatre Pass?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The ₹555 Theatre Pass offers you access to 5 movies per month for ₹555. You can book one ticket per day, with a maximum value of ₹200 per ticket.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How does the referral program work?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>For successful 5 referrals, you will earn rewards. You can refer friends using your unique referral link, and once they sign up, you will receive benefits like discounts or bonus tickets.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I use the pass to watch any movie?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, you can use the ₹555 Theatre Pass to watch any movie, subject to availability and a maximum ticket price of ₹200 per day. Any amount exceeding ₹200 will be paid from your end.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I watch movies on weekends?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Standard users can book tickets for movies only from Monday to Thursday. However, VIP Club members can book tickets any day of the week.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Is there a limit to the number of movies I can watch in a month?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, with the ₹555 Theatre Pass, you can watch up to 5 movies per month, one per day.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What happens if I don't use all my 5 movie credits in a month?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>If you don't use all 5 credits, they will not carry over to the next month. The pass is valid only for the current month's movies.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How can I make payments?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You can make payments securely using various payment methods such as credit/debit cards, net banking, or digital wallets.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How do I get my tickets?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Once you book your ticket via the website, you will receive an electronic ticket (QR code) via email, which you can scan at the theatre for entry.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I upgrade my plan to a VIP Club membership?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, you can upgrade your ₹555 Theatre Pass to a VIP Club membership by paying an additional fee. VIP members have the privilege of booking tickets any day of the week.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What should I do if I face issues with my ticket booking?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>If you encounter any issues, please reach out to our customer support team at <a href="mailto:support@hi5.com">support@hi5.com</a>, and we'll assist you promptly.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Is there an auto-renewal option for the ₹555 pass?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, your subscription will automatically renew at ₹555 every month unless you choose to cancel before the renewal date.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I cancel my subscription?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, you can cancel your subscription at any time before the next billing cycle. However, no refunds will be issued for the current month.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How can I change my subscription details or update my account information?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You can update your account details by logging into your profile on our website and making the necessary changes in the "Account Settings" section.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What do I do if I don't receive my confirmation email?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Please check your spam/junk folder. If you still haven't received it, contact our support team, and we'll help you resolve the issue.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="footer text-center">
+        <div class="container">
+            <div class="row">
+                <!-- <div class="col-12">
+                    <div class="footer-info mb-4">
+                        <h4>HI5 ₹555 Pass</h4>
+                        <p class="mb-2">Pay ₹555/month and watch 5 movies in top theatres</p>
+                        <p class="mb-2">🎟️ Covers up to ₹200 per ticket</p>
+                        <p class="mb-2">🟢 Early Bird Offer: ₹499/month for the first few subscribers only!</p>
+                        <p class="mb-0">💥 Referral Bonus: Invite 5 friends, get 1 movie free when we launch!</p>
+                    </div>
+                     -->
+                    <div class="footer-links">
+                        <a href="{% url 'landing_page' %}">Home</a>
+                        <a href="{% url 'interest_form' %}">Join Now</a>
+                        <a href="#faq">FAQ</a>
+                        <a href="#">Terms & Conditions</a>
+                        <a href="#">Privacy Policy</a>
+                    </div>
+                    
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                    
+                    <p class="mt-3">© 2025 HI5 Pass. All rights reserved.</p>
+                    <p class="mb-0">#HI5Pass #MovieRevolution #ComingSoon</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init();
+        
+        // FAQ Toggle Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    // Toggle active class on the clicked question
+                    question.classList.toggle('active');
+                    
+                    // Close all other answers
+                    faqQuestions.forEach(q => {
+                        if (q !== question) {
+                            q.classList.remove('active');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

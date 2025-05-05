@@ -1,0 +1,48 @@
+{% extends 'subscription/base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="hi5-container" data-aos="fade-up">
+            <h1 class="hi5-title">HI5 Movie Pass - join the Waiting List now</h1>
+            <p class="lead mb-4 text-white">
+                We're excited to bring you India's first movie subscription pass! Please let us know if you're interested in our offering.
+            </p>
+            
+            <div class="card mb-4 bg-cream text-cream" data-aos="zoom-in" data-aos-delay="100">
+                <div class="card-body">
+                    <h3 class="hi5-subtitle" style="color: #eb232a;">Watch 5 Movies for Just ₹555/month!</h3>
+                    <p class="hi5-text">Get ready for the ultimate cinematic experience across top theatres near you - exclusive early bird access at just ₹499.</p>
+                </div>
+            </div>
+            
+            <form method="post" data-aos="fade-up" data-aos-delay="200">
+                {% csrf_token %}
+            
+                <div class="mb-3">
+                    <label for="{{ form.email.id_for_label }}" class="form-label text-white">Email address</label>
+                    <div class="text-white">
+                        {{ form.email.errors }}
+                    </div>
+                    
+                    <input type="email" class="form-control bg-dark text-white border-0" id="{{ form.email.id_for_label }}" name="{{ form.email.html_name }}" required>
+                    <div class="form-text text-light">We'll never share your email with anyone else.</div>
+                </div>
+            
+                <div class="form-check mb-4">
+                    {{ form.interested.errors }}
+                    <input class="form-check-input bg-dark border-white" type="checkbox" id="{{ form.interested.id_for_label }}" name="{{ form.interested.html_name }}" checked>
+                    <label class="form-check-label text-white" for="{{ form.interested.id_for_label }}">
+                        Are you interested in subscribing to HI5 Pass - Watch 5 Movies for ₹555/month?
+                    </label>
+                </div>
+            
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-primary btn-hi5 bounce-button">Continue</button>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+</div>
+{% endblock %}

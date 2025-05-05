@@ -1,0 +1,86 @@
+{% extends 'subscription/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="row justify-content-center bg-cream text-cream py-5">
+    <div class="col-lg-10">
+        <div class="hi5-container text-center">
+            <h1 class="hi5-title display-4 fw-bold text-cream">HI5: India's First Movie Subscription Pass - Coming Soon!</h1>
+            <p class="lead mb-5 text-muted">Join the movie revolution and be among the first to experience unlimited cinema!</p>
+
+            <div class="row mt-4">
+                <!-- Feature Card 1 -->
+                <div class="col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card h-100 bg-cream text-cream border-0 shadow-lg rounded-4 transition-transform hover:scale-105" style="transform: 0.3s ease;">
+                        <div class="card-body">
+                            <h3 class="hi5-subtitle" style="color: #eb232a;">Watch 5 Movies for Just ₹555/month!</h3>
+                            <p class="hi5-text card-text mt-3">
+                                Get ready for the ultimate cinematic experience across top theatres near you – exclusive early bird access at just ₹499.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- Feature Card 2 -->
+                <div class="col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card h-100 bg-cream text-cream border-0 shadow-lg rounded-4 transition-transform hover:scale-105" style="transition: transform 0.3s ease;">
+                        <div class="card-body">
+                            <h3 class="hi5-subtitle " style="color: #eb232a;">Refer & Win Free Movie Tickets!</h3>
+                            <p class="hi5-text card-text mt-3">
+                                Share your referral link with friends. For every 5 friends who sign up using your link, you'll earn 1 FREE movie ticket when HI5 launches!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- Feature Card 3 -->
+                <div class="col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card h-100 bg-cream text-cream border-0 shadow-lg rounded-4 transition-transform hover:scale-105" style="transition: transform 0.3s ease;">
+                        <div class="card-body">
+                            <h3 class="hi5-subtitle" style="color: #eb232a;">Be a Part of History</h3>
+                            <p class="hi5-text card-text mt-3">
+                                This is India's first-ever movie subscription revolution. By joining now, you're not just watching movies – you're becoming part of a community changing cinema forever.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- Feature Card 4 -->
+                <div class="col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card h-100 bg-cream text-cream border-0 shadow-lg rounded-4 transition-transform hover:scale-105" style="transition: transform 0.3s ease;">
+                        <div class="card-body">
+                            <h3 class="hi5-subtitle" style="color: #eb232a;">Exclusive Launch Bonuses</h3>
+                            <p class="hi5-text card-text mt-3">
+                                Early sign-ups get:
+                            </p>
+                            <ul class="hi5-text list-unstyled text-start ms-4">
+                                <li>• Special rewards</li>
+                                <li>• VIP access offers</li>
+                                <li>• Chance to win launch day passes!</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+            <!-- CTA Button -->
+            <div class="mt-5">
+                <a href="{% url 'interest_form' %}" class="btn btn-lg px-5 py-3 rounded-pill text-white btn-hi5 bounce-button" style="background-color: #eb232a;">
+                  Join the Waitlist Now
+                </a>
+              </div>
+              
+            
+
+            <!-- Footer Taglines -->
+            <div class="mt-5">
+                <p class="text-secondary">Stay Tuned. Stay Excited.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
