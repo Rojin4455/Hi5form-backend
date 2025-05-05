@@ -26,7 +26,7 @@ SECRET_KEY = config("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['cd8e-2401-4900-8fde-1a1e-4577-6276-2ae2-95ee.ngrok-free.app', 'localhost', '127.0.0.1', '16.16.138.190']
+ALLOWED_HOSTS = ['cd8e-2401-4900-8fde-1a1e-4577-6276-2ae2-95ee.ngrok-free.app', 'localhost', '127.0.0.1', '16.16.138.190', 'form.hi5entertainments.in']
 
 
 # Application definition
@@ -42,7 +42,8 @@ INSTALLED_APPS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://cd8e-2401-4900-8fde-1a1e-4577-6276-2ae2-95ee.ngrok-free.app"
+    "https://cd8e-2401-4900-8fde-1a1e-4577-6276-2ae2-95ee.ngrok-free.app",
+    "https://form.hi5entertainments.in"
 ]
 
 
